@@ -165,11 +165,10 @@ public class MainActivity extends AppCompatActivity {
                 urlConnection.setReadTimeout(10000 /* milliseconds */);
                 urlConnection.setConnectTimeout(15000 /* milliseconds */);
                 urlConnection.connect();
-                if(urlConnection.getResponseCode() != 200) {
-                    return jsonResponse;
+                if(urlConnection.getResponseCode() == 200) {
+                    inputStream = urlConnection.getInputStream();
+                    jsonResponse = readFromStream(inputStream);
                 }
-                inputStream = urlConnection.getInputStream();
-                jsonResponse = readFromStream(inputStream);
             } catch (IOException e) {
                 // TODO: Handle the exception
             } finally {
