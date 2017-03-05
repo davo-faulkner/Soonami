@@ -174,6 +174,7 @@ public class MainActivity extends AppCompatActivity {
                 }
             } catch (IOException e) {
                 // TODO: Handle the exception
+                Log.e(LOG_TAG, "Problem retreiving the Earthquake JSON results.", e);
             } finally {
                 if (urlConnection != null) {
                     urlConnection.disconnect();
